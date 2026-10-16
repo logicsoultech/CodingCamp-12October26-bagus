@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <!-- Theme pre-load: apply saved theme BEFORE CSS is parsed to prevent flash of wrong theme -->
+  <script>
+    (function () {
+      var t = localStorage.getItem('dashboard_theme');
+      document.documentElement.dataset.theme = (t === 'light') ? 'light' : 'dark';
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="brand-dot"></span>
+        <span class="brand-name">Life Dashboard</span>
+      </div>
+      <button id="theme-toggle" class="btn-icon" aria-label="Toggle light/dark mode">
+        <span id="theme-icon">&#9790;</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== MAIN ========== -->
+  <main>
+
+    <!-- GREETING / CLOCK SECTION -->
+    <section class="card greeting-card" aria-label="Clock and greeting">
+      <div class="greeting-top">
+        <div class="time-block">
+          <p id="clock-time" class="clock-time" aria-live="polite" aria-label="Current time">00:00:00</p>
+          <p id="clock-date" class="clock-date">Loading...</p>
+        </div>
+        <p id="greeting-text" class="greeting-text">Good Morning</p>
+      </div>
+
+      <!-- Custom Name -->
+      <div class="name-form">
+        <label for="name-input" class="form-label">Your name</label>
+        <div class="input-row">
+          <input
+            type="text"
+            id="name-input"
+            class="form-input"
+            maxlength="50"
+            placeholder="Enter your name..."
+            aria-label="Enter your name for personalised greeting"
+          />
+          <button id="name-save-btn" class="btn btn-accent" aria-label="Save name">Save</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD GRID -->
+    <div class="dashboard-grid">
+
+      <!-- FOCUS TIMER -->
+      <section class="card" aria-label="Focus timer">
+        <h2 class="section-title">
+          <span class="section-icon">&#9201;</span> Focus Timer
+        </h2>
+        <div class="timer-display-wrap">
+          <p id="timer-display" class="timer-display" aria-live="polite" aria-label="Timer countdown">25:00</p>
+          <p id="timer-complete" class="timer-complete" hidden aria-live="assertive">&#10003; Session Complete!</p>
+        </div>
+        <div class="timer-controls" id="timer-controls">
+          <button id="timer-start" class="btn btn-accent" aria-label="Start timer">Start</button>
+          <button id="timer-pause" class="btn btn-secondary" aria-label="Pause timer">Pause</button>
+          <button id="timer-reset" class="btn btn-ghost" aria-label="Reset timer">Reset</button>
+        </div>
+      </section>
+
+      <!-- TO-DO LIST -->
+      <section class="card" aria-label="To-do list">
+        <h2 class="section-title">
+          <span class="section-icon">&#9745;</span> To-Do List
+        </h2>
+        <div class="add-task-form">
+          <label for="task-input" class="sr-only">New task</label>
+          <div class="input-row">
+            <input
+              type="text"
+              id="task-input"
+              class="form-input"
+              placeholder="Add a new task..."
+              aria-label="New task title"
+            />
+            <button id="task-add-btn" class="btn btn-accent" aria-label="Add task">Add</button>
+          </div>
+          <p id="task-error" class="error-msg" role="alert" hidden></p>
+        </div>
+        <ul id="task-list" class="task-list" aria-label="Tasks"></ul>
+      </section>
+
+      <!-- QUICK LINKS -->
+      <section class="card" aria-label="Quick links">
+        <h2 class="section-title">
+          <span class="section-icon">&#128279;</span> Quick Links
+        </h2>
+        <div class="add-link-form">
+          <div class="input-stack">
+            <label for="link-label-input" class="form-label">Label</label>
+            <input
+              type="text"
+              id="link-label-input"
+              class="form-input"
+              maxlength="100"
+              placeholder="e.g. YouTube"
+              aria-label="Link label"
+            />
+          </div>
+          <div class="input-stack">
+            <label for="link-url-input" class="form-label">URL</label>
+            <input
+              type="url"
+              id="link-url-input"
+              class="form-input"
+              placeholder="https://..."
+              aria-label="Link URL (must start with http:// or https://)"
+            />
+          </div>
+          <button id="link-add-btn" class="btn btn-accent" aria-label="Add link">Add Link</button>
+          <p id="link-error" class="error-msg" role="alert" hidden></p>
+        </div>
+        <ul id="links-list" class="links-list" aria-label="Quick links"></ul>
+      </section>
+
+    </div><!-- /.dashboard-grid -->
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Life Dashboard &mdash; built with vanilla JS</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
